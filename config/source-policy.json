@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "requiredMetadata": ["source_id", "tenant_id", "locale", "classification", "title", "updated_at"],
+  "classifications": {
+    "verified": {"eligible": true, "citationRequired": true},
+    "scholarly": {"eligible": true, "citationRequired": true},
+    "traditional": {"eligible": true, "citationRequired": true},
+    "needs_review": {"eligible": false, "citationRequired": true},
+    "restricted": {"eligible": false, "citationRequired": true}
+  },
+  "requireTenantMatch": true,
+  "requireLocaleMetadata": true,
+  "excludeDeleted": true,
+  "excludeExpired": true,
+  "minimumRetrievedSources": 1,
+  "maximumRetrievedSources": 8
+}
