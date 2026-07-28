@@ -1,0 +1,35 @@
+name: Validate AI Tutor Baseline
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ai-tutor-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate AI tutor policy
+        run: python3 scripts/validate_ai_tutor_baseline.py
+      - name: Run negative AI tutor safety cases
+        run: python3 scripts/test_ai_tutor_safety_cases.py
+      - name: Compile Python validators
+        run: python3 -m py_compile scripts/*.py
+      - name: Verify required documentation
+        run: |
+          test -f docs/THREAT_MODEL.md
+          test -f docs/AI_TUTOR_OPERATIONS_RUNBOOK.md
+          test -f docs/QUALITY_EVALUATION.md
+          test -f docs/PRODUCTION_READINESS.md
+          test -f docs/adr/0001-grounded-safe-tutoring.md
