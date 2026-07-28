@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "apiPrefix": "/api/v1/tutor",
+  "requireAuthentication": true,
+  "tenantClaim": "tenant_id",
+  "enforceTenantIsolation": true,
+  "allowClientTenantOverride": false,
+  "supportedLocales": ["en-GB", "ta-IN"],
+  "maximumInputCharacters": 4000,
+  "maximumOutputCharacters": 8000,
+  "maximumConversationTurns": 50,
+  "requestTimeoutMilliseconds": 30000,
+  "requireSourceGrounding": true,
+  "requireCitationsForFactualClaims": true,
+  "allowUnverifiedSources": false,
+  "allowRestrictedSources": false,
+  "promptInjectionDefenceRequired": true,
+  "systemInstructionOverrideAllowed": false,
+  "toolAllowListRequired": true,
+  "childSafetyModeRequired": true,
+  "guardianControlsRequired": true,
+  "allowMedicalDiagnosis": false,
+  "allowPersonalFinancialAdvice": false,
+  "allowPoliticalPersuasion": false,
+  "allowCredentialCollection": false,
+  "allowSecretDisclosure": false,
+  "privacy": {
+    "logRawPrompts": false,
+    "logRawResponses": false,
+    "redactIdentifiers": true,
+    "maximumConversationRetentionDays": 90
+  },
+  "rateLimits": {
+    "requestsPerMinute": 30,
+    "privilegedRequestsPerMinute": 60,
+    "burstMultiplier": 2
+  }
+}
